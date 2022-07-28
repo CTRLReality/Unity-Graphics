@@ -202,6 +202,24 @@ Shader "Universal Render Pipeline/Nature/SpeedTree7"
 
             ENDHLSL
         }
+
+        Pass
+        {
+            Name "MotionVectors"
+            Tags{ "LightMode" = "MotionVectors"}
+            Tags { "RenderType" = "Opaque" }
+
+            ZWrite[_ZWrite]
+            Cull[_Cull]
+
+            HLSLPROGRAM
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/OculusMotionVectorCore.hlsl"
+
+            #pragma vertex vert
+            #pragma fragment frag
+
+            ENDHLSL
+        }
     }
 
     Dependency "BillboardShader" = "Universal Render Pipeline/Nature/SpeedTree7 Billboard"
